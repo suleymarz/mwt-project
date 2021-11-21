@@ -1,0 +1,13 @@
+.App-body{
+  > * {
+    margin: 10px 5px;
+  }
+  .OutputContainer{
+    width: 985px;
+    padding: 10px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    border: 1px solid black;
+    background: rgba(241, 241, 195, 0.5);
+  }
+}

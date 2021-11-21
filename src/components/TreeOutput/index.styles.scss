@@ -1,0 +1,23 @@
+.treeNode{
+  width: fit-content;
+  margin: 0 2px;
+  text-align: center;
+  padding: 10px 5px 5px;
+  border: 1px solid rebeccapurple;
+
+  & > .nodeId{
+    width: 100%;
+    font-weight: bold;
+  }
+
+  & > .nodeChildren{
+    padding: 4px;
+    display: flex;
+    border: 1px solid gold;
+    align-items: flex-start;
+
+    & > .treeNode{
+      min-width: 10px;
+    }
+  }
+}
