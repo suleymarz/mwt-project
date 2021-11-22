@@ -11,7 +11,7 @@ export interface TreeOutputProps {
 
 export const TreeOutput = ({ treeNode }: TreeOutputProps) => {
     const { smallestSubtree } = useContext(AppStateContext)
-    const isSmallestSubtreeNode = smallestSubtree.id === treeNode.id
+    const isSmallestSubtreeNode = smallestSubtree && treeNode && smallestSubtree.id === treeNode.id
 
     if (!treeNode || !treeNode.id) {
         return <div className='treeNode' />

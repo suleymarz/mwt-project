@@ -6,6 +6,7 @@ import parseArrayToTree from '../../utilities/parseArrayToTree'
 import { isValidJSON, hasObjectBinTreeStructure } from '../../utilities/validations'
 import './index.styles.scss'
 import getSmallestSubtree from '../../utilities/getSmallestSubtree'
+import classNames from 'classnames'
 
 export interface TreeInputProps {
     onChange: (newTreeNode: BinTreeNodeT) => void
@@ -71,17 +72,16 @@ const JSONParser = ({ onChange }: TreeInputProps) => {
     }, [treeNode])
 
     return (
-        <div>
+        <div className='JsonParser'>
             <input type='file' onChange={handleFileUpload} accept='*.json,*.txt' ref={inputRef} />
 
             <button onClick={handleProcess}>Fetch</button>
             <br />
             <textarea
                 rows={30}
-                cols={120}
                 value={treeText}
                 onChange={handleTextAreaChange}
-                className={error && 'error-box'}
+                className={classNames('JsonParser-textarea', { 'error-box': error })}
             />
             {error && <p className='error-msg'>{error.msg}</p>}
         </div>

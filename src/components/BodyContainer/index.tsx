@@ -38,9 +38,11 @@ const BodyContainer = ({ bodyMessage }: BodyContainerT): JSX.Element => {
         <main className='App-body'>
             {bodyMessage}
 
-            <JSONParser onChange={onInputChange} />
-            <div className='OutputContainer'>
-                <TreeOutput treeNode={treeNode} />
+            <div className='flex-container'>
+                <JSONParser onChange={onInputChange} />
+                <div className='OutputContainer'>
+                    <TreeOutput treeNode={treeNode} />
+                </div>
             </div>
         </main>
     )

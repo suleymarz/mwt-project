@@ -11,18 +11,18 @@ import { BinTreeNodeT } from '../types'
  * @returns number
  * */
 
-const getSmallestSubtree = (root: BinTreeNodeT, subtreeNode: BinTreeNodeT | null = null) => {
+const getSmallestSubtree = (root: BinTreeNodeT) => {
     if (!root) return root
 
     const leftHeight = getTreeHeight(root['left'])
     const rightHeight = getTreeHeight(root['right'])
 
     if (rightHeight === leftHeight) {
-        return subtreeNode || root
+        return root
     } else if (leftHeight < rightHeight) {
-        return getSmallestSubtree(root['right'], root)
+        return getSmallestSubtree(root['right'])
     } else {
-        return getSmallestSubtree(root['left'], root)
+        return getSmallestSubtree(root['left'])
     }
 }
 
