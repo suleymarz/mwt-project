@@ -5,6 +5,10 @@
   padding: 10px 5px 5px;
   border: 1px solid rebeccapurple;
 
+  &.smallestTreeNode{
+    border: 2px solid green;
+  }
+
   & > .nodeId{
     width: 100%;
     font-weight: bold;

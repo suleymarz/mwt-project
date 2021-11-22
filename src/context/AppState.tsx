@@ -1,10 +1,12 @@
-import React, { createContext, Dispatch, SetStateAction, useState } from 'react'
+import React, { createContext, Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { BinTreeNodeT } from '../types'
+import getSmallestSubtree from '../utilities/getSmallestSubtree'
 
 type AppStateContextProviderT = { children?: React.ReactNode }
 
 type AppStateContextT = {
     treeNode: BinTreeNodeT
+    smallestSubtree: BinTreeNodeT | null
     setTreeNode: Dispatch<SetStateAction<BinTreeNodeT>>
 }
 
@@ -14,21 +16,35 @@ const contextDefaultValues: AppStateContextT = {
         left: null,
         right: null
     },
+    smallestSubtree: null,
     setTreeNode: () => {}
 }
 
 export const AppStateContext = createContext(contextDefaultValues)
 
+const defaultTreeNode = {
+    id: 'root',
+    left: null,
+    right: null
+}
+
 const AppStateContextProvider = ({ children }: AppStateContextProviderT): JSX.Element => {
-    const [treeNode, setTreeNode] = useState<BinTreeNodeT>({
-        id: 'root',
+    const [treeNode, setTreeNode] = useState<BinTreeNodeT>(defaultTreeNode)
+    const [smallestSubtree, setSmallestSubtree] = useState<BinTreeNodeT>({
+        id: null,
         left: null,
         right: null
     })
 
-    const context = { treeNode, setTreeNode }
+    useEffect(() => {
+        setSmallestSubtree(getSmallestSubtree(treeNode))
+    }, [treeNode])
 
-    return <AppStateContext.Provider value={context}>{children}</AppStateContext.Provider>
+    return (
+        <AppStateContext.Provider value={{ treeNode, setTreeNode, smallestSubtree }}>
+            {children}
+        </AppStateContext.Provider>
+    )
 }
 
 export default AppStateContextProvider

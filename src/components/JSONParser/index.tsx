@@ -3,20 +3,12 @@ import { useContext, useEffect, useRef, useState } from 'react'
 import { BinTreeNodeT } from '../../types'
 import { AppStateContext } from '../../context/AppState'
 import parseArrayToTree from '../../utilities/parseArrayToTree'
-import hasObjectBinTreeStructure from '../../utilities/validateTreeJSON'
+import { isValidJSON, hasObjectBinTreeStructure } from '../../utilities/validations'
 import './index.styles.scss'
+import getSmallestSubtree from '../../utilities/getSmallestSubtree'
 
 export interface TreeInputProps {
     onChange: (newTreeNode: BinTreeNodeT) => void
-}
-
-const isValidJSON = (text: string) => {
-    try {
-        JSON.parse(text)
-    } catch (e) {
-        return false
-    }
-    return true
 }
 
 type ErrorT = {
@@ -74,6 +66,8 @@ const JSONParser = ({ onChange }: TreeInputProps) => {
 
     useEffect(() => {
         setTreeText(JSON.stringify(treeNode, null, 4))
+        const smallestTree = getSmallestSubtree(treeNode)
+        console.log(smallestTree)
     }, [treeNode])
 
     return (

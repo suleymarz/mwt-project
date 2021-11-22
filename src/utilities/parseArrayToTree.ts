@@ -1,4 +1,4 @@
-import { LeafT, NodeT } from '../types'
+import { BinTreeNodeT, LeafT, NodeT } from '../types'
 import { BinTreeNode } from './BinTreeNode'
 
 type LeafOrNodeT = LeafT | Array<any>
@@ -6,7 +6,7 @@ type LeafOrNodeT = LeafT | Array<any>
 /*TODO: Fix typescript errors*/
 const getTreeNode = (node: LeafOrNodeT) => {
     if (!node) return node
-    console.log(node)
+
     // @ts-ignore
     const [id, leftNode, rightNode] = node || [null, null, null]
     const leftDefault = !leftNode && !rightNode ? undefined : null
@@ -24,7 +24,7 @@ const getTreeNode = (node: LeafOrNodeT) => {
  * @returns TreeNode format
  * */
 
-const parseArrayToTree = (inputArray: Array<any>) => {
+const parseArrayToTree = (inputArray: Array<any>): BinTreeNodeT => {
     const treeNode = getTreeNode(inputArray)
     const parsedTree = JSON.parse(
         JSON.stringify(treeNode, (key, value) => {
