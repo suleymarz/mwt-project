@@ -1,0 +1,32 @@
+body {
+  background-color: $mine-shaft;
+  color: $white;
+
+  label {
+    display: block;
+    margin: 10px 0;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  button {
+    color: $white;
+    display: block;
+    margin: 0 auto;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 2px;
+    text-align: center;
+    outline-style: none;
+    border: 1px solid $lochmara;
+    background-color: $lochmara;
+    transition: background-color 150ms ease-in-out;
+
+    //NOTE: Button can have different intents and change its background color
+
+    &:hover{
+      background-color: $endeavour;
+  }
+  }
+}

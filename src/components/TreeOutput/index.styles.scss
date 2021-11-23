@@ -1,0 +1,27 @@
+.treeNode {
+  margin: 0 2px;
+  width: fit-content;
+  text-align: center;
+  padding: 10px 5px 5px;
+  border: 1px solid $deluge;
+
+  &.smallestTreeNode{
+    border: 2px solid $green;
+  }
+
+  & > .nodeId{
+    width: 100%;
+    font-weight: bold;
+  }
+
+  & > .nodeChildren{
+    padding: 4px;
+    display: flex;
+    align-items: flex-start;
+    border: 1px solid $equator;
+
+    & > .treeNode{
+      min-width: 10px;
+    }
+  }
+}
