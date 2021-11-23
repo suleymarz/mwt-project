@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+# MWT Test
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). You can use the integrated scripts to run the app, such as `npm start` or `npm run build`  
 
-## Available Scripts
+## Problem 1
 
-In the project directory, you can run:
+You can find the required function in `src/utilities/parseArrayToTree.ts`.
+This function does 2 things:
+ - Retrieve a `BinTreeNode` object with the recursive function `getTreeNode`(located in `src/utilities/getTreeNode.ts`)
+ - Parse to JSON & Format the BinTreeNode, return this result
 
-### `npm start`
+This function is called in "Problem 2"
+ 
+## Problem 2
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Fetching `main` branch and running `npm start` will display the SPA, that will contain:
+- The file input field. I limited the type files such as `.txt` & `.json` 
+- The "Fetch" button that will process the file
+- The TextArea with the processed tree formatted as JSON text, this text area is editable
+- The text area will be change its border color to error if any of the following situations happens:
+  - The JSON provided has a syntax error
+  - The JSON provided has an error and cannot be processed as BinTreeNode (e.g, some node does not have the 'id' prop)
+  
+## Problem 3
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+It is rendered in the main page along with the "Problem 2".
 
-### `npm test`
+```
+In the output area shown in your solution above Problem 2, find the smallest subtree with all the deepest nodes and set its border to 2px solid green.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+If a tree has only one node at depth equal to the max tree depth, the that node by itself represents the subtree that cotains all the deepest nodes. If multiple nodes whose depths are equal to the max tree depth, then the solution is the smallest subtree containing all those deepest nodes.
 
-### `npm run build`
+In the accomaniying README.md you make, please write down your basic assumptions and engineering tradeoffs for your interpolation of this problem and your solution
+``` 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Possible enhacements
+- [Problem 2]: Use a drag-drop area instead of only the file input. This could save 3 clicks to the user, making the experience a little more easier and quick.      
+- [Problem 2]: Add line-numbers to the text area (or use a library that could make this a display the text as code editor). This could be an improvement to highlight the errors and make them easier to fix.  
+- [Problem 3]: Add animations on hover for the sub-trees div section. That makes the display look more interactive.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## BONUS
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
