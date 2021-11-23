@@ -1,6 +1,7 @@
 import React, { createContext, Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { BinTreeNodeT } from '../types'
-import getSmallestSubtree from '../utilities/getSmallestSubtree'
+import getSmallestSubtree from '../utilities/smallestSubtree/recursive/getSmallestSubtree'
+import getSmallestSubtreeWithQueue from '../utilities/smallestSubtree/iterative/getSmallestSubtreeWithQueue'
 
 type AppStateContextProviderT = { children?: React.ReactNode }
 
@@ -37,7 +38,7 @@ const AppStateContextProvider = ({ children }: AppStateContextProviderT): JSX.El
     })
 
     useEffect(() => {
-        setSmallestSubtree(getSmallestSubtree(treeNode))
+        setSmallestSubtree(getSmallestSubtreeWithQueue(treeNode))
     }, [treeNode])
 
     return (
