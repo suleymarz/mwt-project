@@ -25,8 +25,10 @@ const JSONParser = ({ onChange }: TreeInputProps) => {
      * */
 
     const handleFileUpload = ev => {
-        setError(null)
-        reader.readAsText(ev.target.files[0])
+        if (ev.target.files.length) {
+            setError(null)
+            reader.readAsText(ev.target.files[0])
+        }
     }
 
     const onReaderLoad = ev => {
@@ -67,7 +69,7 @@ const JSONParser = ({ onChange }: TreeInputProps) => {
 
         if (inputRef.current.files.length) {
             setError(null)
-            reader.readAsText(inputRef.current.files)
+            reader.readAsText(inputRef.current.files[0])
         } else {
             setError('There is no uploaded file, please upload a .txt or .json and try again')
         }
