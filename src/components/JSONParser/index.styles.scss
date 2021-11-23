@@ -1,25 +1,81 @@
-$purple: #3b2e58;
-$cod-gray: #171717;
-$white: #ffffff;
-
-
 .JsonParser {
   width: 100%;
+  height: 100%;
+  padding: 10px;
+
+  .JsonParser-input-container{
+    display: flex;
+    align-items: center;
+  }
+
+  .JsonParser-input-label{
+    width: 100%;
+    outline: none;
+    font-size: 14px;
+    cursor: pointer;
+    line-height: 14px;
+    font-weight: bold;
+    margin-right: 10px;
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 4px;
+    white-space: nowrap;
+    display: inline-block;
+    border: 1px solid $white;
+    content: 'Upload a .txt or .json file';
+    transition: all 150ms ease-in-out;
+
+    &:hover::before {
+      color: $cornflower-blue;
+      border-color: $cornflower-blue;
+    }
+  }
+
+  //Hiding actual file input
+  .JsonParser-input {
+    width:0;
+    height:0;
+    position: absolute;
+
+    ::-webkit-file-upload-button {
+      visibility: hidden;
+    }
+  }
+
+  .JsonParser-editor-box {
+    position: relative;
+  }
 
   .JsonParser-textarea {
     width: 100%;
+    color: $white;
     box-sizing: border-box;
+    background-color: transparent;
+
+    &:focus, &:focus-visible {
+      outline: none !important;
+      box-shadow: 0 0 5px $cornflower-blue;
+    }
+
+    &.error-box {
+      outline-color: $red-alert;
+      border:1px solid $red-alert;
+
+      &:focus, &:focus-visible {
+        outline: none !important;
+        box-shadow: 0 0 5px $red-alert;
+      }
+    }
   }
 
-  .error-box {
-    outline-color: red;
-    border:1px solid red;
-  }
+
 
   .error-msg {
-    color: red;
-    padding: 5px 0;
+    color: $white;
+    font-size: 12px;
+    padding: 5px 10px;
     font-weight: bold;
+    background-color: rgba($red-alert,0.75);
   }
 }
 

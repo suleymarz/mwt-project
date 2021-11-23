@@ -1,12 +1,12 @@
-.treeNode{
-  width: fit-content;
+.treeNode {
   margin: 0 2px;
+  width: fit-content;
   text-align: center;
   padding: 10px 5px 5px;
-  border: 1px solid rebeccapurple;
+  border: 1px solid $deluge;
 
   &.smallestTreeNode{
-    border: 2px solid green;
+    border: 2px solid $green;
   }
 
   & > .nodeId{
@@ -17,8 +17,8 @@
   & > .nodeChildren{
     padding: 4px;
     display: flex;
-    border: 1px solid gold;
     align-items: flex-start;
+    border: 1px solid $equator;
 
     & > .treeNode{
       min-width: 10px;

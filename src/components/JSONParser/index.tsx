@@ -1,11 +1,9 @@
-import * as React from 'react'
-import { useContext, useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
 import { BinTreeNodeT } from '../../types'
 import { AppStateContext } from '../../context/AppState'
 import parseArrayToTree from '../../utilities/parseArrayToTree'
 import { isValidJSON, hasObjectBinTreeStructure } from '../../utilities/validations'
-import './index.styles.scss'
 
 export interface TreeInputProps {
     onChange: (newTreeNode: BinTreeNodeT) => void
@@ -16,6 +14,7 @@ const JSONParser = ({ onChange }: TreeInputProps) => {
 
     const [treeText, setTreeText] = useState<string>('')
     const [error, setError] = useState<string | null>(null)
+    const [fileInputText, setFileInputText] = useState<string>('Upload a .txt or .json file')
 
     const inputRef = useRef(null)
     const reader = new FileReader()
@@ -27,6 +26,7 @@ const JSONParser = ({ onChange }: TreeInputProps) => {
     const handleFileUpload = ev => {
         if (ev.target.files.length) {
             setError(null)
+            setFileInputText(`Selected file: ${ev.target.files[0].name}`)
             reader.readAsText(ev.target.files[0])
         }
     }
@@ -71,6 +71,7 @@ const JSONParser = ({ onChange }: TreeInputProps) => {
             setError(null)
             reader.readAsText(inputRef.current.files[0])
         } else {
+            setFileInputText('Upload a .txt or .json file')
             setError('There is no uploaded file, please upload a .txt or .json and try again')
         }
     }
@@ -85,17 +86,35 @@ const JSONParser = ({ onChange }: TreeInputProps) => {
 
     return (
         <div className='JsonParser'>
-            <input type='file' onChange={handleFileUpload} accept='*.json,*.txt' ref={inputRef} />
+            <label>Tree source:</label>
 
-            <button onClick={handleProcessFile}>Fetch</button>
-            <br />
-            <textarea
-                rows={30}
-                value={treeText}
-                onChange={handleTextAreaChange}
-                className={classNames('JsonParser-textarea', { 'error-box': error })}
-            />
-            {error && <p className='error-msg'>{error}</p>}
+            <div className={'JsonParser-input-container'}>
+                <label htmlFor='inputFile' className='JsonParser-input-label'>
+                    <input
+                        type='file'
+                        id='inputFile'
+                        ref={inputRef}
+                        accept='*.json,*.txt'
+                        className='JsonParser-input'
+                        onChange={handleFileUpload}
+                    />
+                    {fileInputText}
+                </label>
+
+                <button className='JsonParser-button' onClick={handleProcessFile}>
+                    Fetch
+                </button>
+            </div>
+            <div className='JsonParser-editor-box'>
+                <label>Tree text:</label>
+                <textarea
+                    rows={30}
+                    value={treeText}
+                    onChange={handleTextAreaChange}
+                    className={classNames('JsonParser-textarea', { 'error-box': error })}
+                />
+                {error && <p className='error-msg'>{error}</p>}
+            </div>
         </div>
     )
 }

@@ -1,6 +1,5 @@
 import React, { createContext, Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { BinTreeNodeT } from '../types'
-import getSmallestSubtree from '../utilities/smallestSubtree/recursive/getSmallestSubtree'
 import getSmallestSubtreeWithQueue from '../utilities/smallestSubtree/iterative/getSmallestSubtreeWithQueue'
 
 type AppStateContextProviderT = { children?: React.ReactNode }

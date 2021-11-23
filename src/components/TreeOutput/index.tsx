@@ -1,9 +1,7 @@
-import * as React from 'react'
-import { BinTreeNodeT } from '../../types'
-import './index.styles.scss'
-import { useContext } from 'react'
-import { AppStateContext } from '../../context/AppState'
+import React, { useContext } from 'react'
 import classNames from 'classnames'
+import { BinTreeNodeT } from '../../types'
+import { AppStateContext } from '../../context/AppState'
 
 export interface TreeOutputProps {
     treeNode: BinTreeNodeT | null
