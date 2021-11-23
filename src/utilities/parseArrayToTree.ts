@@ -1,22 +1,5 @@
-import { BinTreeNodeT, LeafT, NodeT } from '../types'
-import { BinTreeNode } from './BinTreeNode'
-
-type LeafOrNodeT = LeafT | Array<any>
-
-/*TODO: Fix typescript errors*/
-const getTreeNode = (node: LeafOrNodeT) => {
-    if (!node) return node
-
-    // @ts-ignore
-    const [id, leftNode, rightNode] = node || [null, null, null]
-    const leftDefault = !leftNode && !rightNode ? undefined : null
-
-    return new BinTreeNode(
-        id,
-        getTreeNode(leftNode || leftDefault),
-        getTreeNode(rightNode || undefined)
-    )
-}
+import { BinTreeNodeT } from '../types'
+import getTreeNode from './getTreeNode'
 
 /**
  * Converts array format binary tree notation to BinTreeNode data structure
@@ -26,11 +9,15 @@ const getTreeNode = (node: LeafOrNodeT) => {
 
 const parseArrayToTree = (inputArray: Array<any>): BinTreeNodeT => {
     const treeNode = getTreeNode(inputArray)
-    const parsedTree = JSON.parse(
-        JSON.stringify(treeNode, (key, value) => {
-            if (value !== null) return value
-        })
-    )
+
+    const jsonFormatReplacer = (key, value) => {
+        if (value !== null) return value
+    }
+
+    /*
+     * Get a formatted JSON from the tree structure obtained in last step.
+     * */
+    const parsedTree = JSON.parse(JSON.stringify(treeNode, jsonFormatReplacer))
 
     return parsedTree
 }

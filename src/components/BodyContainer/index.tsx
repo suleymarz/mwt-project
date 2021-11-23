@@ -1,29 +1,9 @@
-import * as React from 'react'
+import React, { useContext } from 'react'
 import JSONParser from '../JSONParser'
 import { TreeOutput } from '../TreeOutput'
-import './index.styles.scss'
-import { useContext } from 'react'
 import { AppStateContext } from '../../context/AppState'
 import { BinTreeNodeT } from '../../types'
-
-/*const BodyRenderer: React.FunctionComponent<> = observer(props => {
-    return (
-        <main className='App-body'>
-            {props.appState!.bodyMessage}
-            <TreeInput
-                onChange={newVal => {
-                    props.appState.setState({
-                        ...props.appState,
-                        treeNode: newVal
-                    })
-                }}
-            />
-            <div className='OutputContainer'>
-                <TreeOutput treeNode={props.appState.treeNode} />
-            </div>
-        </main>
-    )
-})*/
+import './index.styles.scss'
 
 type BodyContainerT = { bodyMessage: string }
 

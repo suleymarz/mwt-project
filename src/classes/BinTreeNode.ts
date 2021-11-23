@@ -8,6 +8,4 @@ export class BinTreeNode {
         this.left = left
         this.right = right
     }
-
-    preOrderTraversal = () => {}
 }
