@@ -56,7 +56,25 @@ For the main SPA we'll be using the iterative approach, but keeping the recursiv
 - [Problem 3]: Add toggle buttons to decide combination of algorithms for getting the smallestSubtree  
 - [Problem 3]: Add comparisons of memory & time for each combination of algorithms for getting the smallestSubtree
 - [Problem 3]: Add animations on hover for the sub-trees div section. That makes the display look more interactive.
-- 
+
 - [General]: Add ability to switch between column-view & row-view
+
+
+## Screenshoots:
+
+Input: 
+<img width="518" alt="Screen Shot 2021-11-23 at 9 27 36" src="https://user-images.githubusercontent.com/13036872/143053885-875b984b-a013-4e60-9e2d-3c799d7d721c.png">
+
+Tree TextArea
+<img width="511" alt="Screen Shot 2021-11-23 at 9 27 40" src="https://user-images.githubusercontent.com/13036872/143053890-b7712b23-5cd4-4bc8-bb1a-cda4cbb88f9f.png">
+
+Main App
+<img width="1084" alt="Screen Shot 2021-11-23 at 9 28 10" src="https://user-images.githubusercontent.com/13036872/143053892-19ed4d7e-b6cc-4f54-97fa-7cd9a597f149.png">
+
+
+## Video
+
+https://user-images.githubusercontent.com/13036872/143053929-73f0253a-673a-45ad-b423-db681f16c59b.mov
+
 
 
