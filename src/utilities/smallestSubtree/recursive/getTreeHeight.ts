@@ -1,4 +1,4 @@
-import { BinTreeNodeT } from '../types'
+import { BinTreeNodeT } from '../../../types'
 
 /**
  * Function that returns the tree height
