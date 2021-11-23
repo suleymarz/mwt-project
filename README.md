@@ -57,6 +57,6 @@ For the main SPA we'll be using the iterative approach, but keeping the recursiv
 - [Problem 3]: Add comparisons of memory & time for each combination of algorithms for getting the smallestSubtree
 - [Problem 3]: Add animations on hover for the sub-trees div section. That makes the display look more interactive.
 - 
-- [General]:
+- [General]: Add ability to switch between column-view & row-view
 
 
