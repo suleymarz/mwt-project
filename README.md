@@ -23,23 +23,40 @@ Fetching `main` branch and running `npm start` will display the SPA, that will c
   
 ## Problem 3
 
-It is rendered in the main page along with the "Problem 2".
+It is rendered in the main page along with the "Problem 2". 
 
-```
-In the output area shown in your solution above Problem 2, find the smallest subtree with all the deepest nodes and set its border to 2px solid green.
+- We have to check out for the depth of the tree to know which child is the one that has the deepest node
+- Knowing the tree's height is itself a tree transversal problem
+- The first thing to do is a recursive approach to get the height of each node on each level and return the maximum number
+- Then, for the main problem on each node we call that getTreeHeight function and compare if is the left side or the right side the one that has a greater depth, this will indicate which child contains the latest node.
+- If the height of both sides is equal, it means that either we're on the deepest leaf or we've found the deepest subtree, in that case we return the node we just evaluated.
+- If that's not the case we do a recursive call to the same function sending the node that has the greater height as "treeNode", which will evaluate again everything for the child node.
 
-If a tree has only one node at depth equal to the max tree depth, the that node by itself represents the subtree that cotains all the deepest nodes. If multiple nodes whose depths are equal to the max tree depth, then the solution is the smallest subtree containing all those deepest nodes.
+[NOTE 1]: 
+There's a possible improvement: A dynamic programming approach could be used to store each level left and right heights and only look for that value in an object or something instead of calling the recursive functions on each node. I didn't explore this option but I think it could improve the performance.
 
-In the accomaniying README.md you make, please write down your basic assumptions and engineering tradeoffs for your interpolation of this problem and your solution
-``` 
+`[NOTE 2]:`
+Recursion is viable for the test cases given in the example, however in real world, the data structures are not quite small and using recursion for production environments could lead to bad performance results or stack overflows.
+That approach could save us some memory consumed because we're not storing extra data but still could end up badly on larger datasets. 
 
+That's why an iterative approach could be also used (for both functions: getTreeHeight &  getSmallestSubtree), this could add extra stored variables but would work better on larger datasets. 
+In this project you can find both approaches 
+
+RECURSIVE: (The first one I came with) `src/utilities/smallesSubtree/recursive` 
+ITERATIVE: `src/utilities/smallesSubtree/iterative`
+
+For the main SPA we'll be using the iterative approach, but keeping the recursive as the first idea I had and coded.
 
 ## Possible enhacements
 - [Problem 2]: Use a drag-drop area instead of only the file input. This could save 3 clicks to the user, making the experience a little more easier and quick.      
-- [Problem 2]: Add line-numbers to the text area (or use a library that could make this a display the text as code editor). This could be an improvement to highlight the errors and make them easier to fix.  
+- [Problem 2]: Add upload progress indicator. Gives the user info while waiting.
+- [Problem 2]: Process the file as soon as the file updates. This save the user one more click. 
+- [Problem 2]: Add line-numbers to the text area (or use a library that could make this a display the text as code editor). This could be an improvement to highlight the errors and make them easier to fix.
+
+- [Problem 3]: Add toggle buttons to decide combination of algorithms for getting the smallestSubtree  
+- [Problem 3]: Add comparisons of memory & time for each combination of algorithms for getting the smallestSubtree
 - [Problem 3]: Add animations on hover for the sub-trees div section. That makes the display look more interactive.
-
-
-## BONUS
+- 
+- [General]:
 
 
